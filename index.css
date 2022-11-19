@@ -1,0 +1,130 @@
+:root{
+    --color-red: hsl(0, 78%, 62%);
+    --color-cyan: hsl(180, 62%, 55%);
+    --color-orange: hsl(34, 97%, 64%);
+    --color-blue: hsl(212, 86%, 64%);
+    --color-very-dark-blue: hsl(234, 12%, 34%);
+    --color-grayish-blue: hsl(229, 6%, 66%);
+    --color-very-light-gray: hsl(0, 0%, 98%);
+
+    font-size: 15px;
+}
+*{box-sizing: border-box;}
+body{background-color: var(--color-very-light-gray);}
+main{
+    width: 90%;
+    margin: auto;
+}
+header h1{
+    font-size: 1.5rem;
+    color: var(--color-very-dark-blue);
+    text-align: center;
+    font-weight: 400;
+}
+header h1 strong {font-weight: 600;}
+header p{
+    color: var(--color-grayish-blue);
+    text-align: center;
+    text-align-last: center;
+    font-size: 1.1rem;
+    font-weight: 200;
+    width: 90%;
+    margin: auto;
+}
+
+main > section{margin-top: 5%;}
+.card{
+    background-color: white;
+    padding: 5% ;
+    margin-bottom: 10%;
+    border-radius: 10px;
+    transition: all 1s ease-out;
+    box-shadow: 0 0 10px lightblue;
+}
+.card:hover{
+    box-shadow: 0 15px 30px var(--color-very-dark-blue);
+}
+.card p{
+    color: var(--color-grayish-blue);
+    font-weight: 200;
+    font-size: 1.1rem;
+}
+.card p:last-of-type{
+    text-align: right;
+    margin-top: 30%;
+}
+.card:first-of-type{border-top: 5px solid var(--color-cyan);}
+.card:nth-of-type(2){border-top: 5px solid var(--color-red);}
+.card:nth-of-type(3){border-top: 5px solid var(--color-orange);}
+.card:last-of-type{border-top: 5px solid var(--color-blue);}
+
+@media only screen and (min-width: 600px){ 
+/* we do not change the layout for some kind
+ of screen like small tablet but just increasing the font-size :) */
+    :root{
+        font-size: 20px;
+    }
+    main{
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 800px){
+
+    /* due to the last media query 
+       we go back to default design
+       first */
+    :root{
+        font-size: 15px;
+    }
+    main{
+        width: 90%;
+    }
+    /* then we start styling */
+    header h1{
+        font-size: 30px;
+
+    }
+    header p{
+        width: 30%;
+        margin: auto;
+    }
+    main > section{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-content: space-between;
+        gap: 3%;
+    }
+    .card{
+        flex-basis: 30%;
+        flex-grow: 1;
+        margin-bottom: 3%;
+        max-width: 30%;
+        padding: 1% 3% 0 3%;
+        animation: moving 3s alternate both infinite;
+    }
+    .card:hover{
+        cursor: crosshair;
+    }
+    .card:first-of-type, .card:nth-of-type(3){
+        transform: translateY(50%);
+        animation-delay: .5s;
+    }
+    .card:nth-of-type(2){animation-delay: 1.2s;}
+    .card:first-of-type:hover{background-image: linear-gradient( to top, var(--color-cyan),  transparent 50% );}
+    .card:nth-of-type(2):hover{background-image: linear-gradient( to top, var(--color-red),  transparent 50% );}
+    .card:nth-of-type(3):hover{background-image: linear-gradient( to top, var(--color-orange),  transparent 50% );}
+    .card:nth-of-type(4):hover{background-image: linear-gradient( to top, var(--color-blue),  transparent 50% );}
+    @keyframes moving{
+        /* i usually use transform but due to the first transform
+           i wrote earlier i have to put more code  if i want my
+           animation to work properly. and i am really lazy so i
+           used the margin which is easier but i suggest you tryin
+           with the padding which will give another kind of animation. 
+        */
+        0%{margin-left: 1%;}
+        50%{margin-left: -1%;}
+        100%{margin-left: 1%;}
+    }
+}
